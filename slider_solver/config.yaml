@@ -1,0 +1,34 @@
+name: XPENG slider solver
+version: "0.1.2"
+slug: xpeng_slider_solver
+description: >-
+  Solves the XPENG login slider captcha (NetEase Yidun) headlessly, so an install
+  can renew its own credentials instead of waiting for a human to drag a slider.
+url: https://github.com/xpengtoolkit/slider-solver
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+ports:
+  "8080/tcp": 8080
+ports_description:
+  "8080/tcp": Solver API - POST /solve, GET /healthz
+ingress: true
+ingress_port: 8080
+panel_icon: mdi:puzzle-outline
+panel_title: Slider solver
+options:
+  solver_token: ""
+  solve_timeout_ms: 45000
+  solve_attempts: 4
+  drag_bias_px: 10.5
+schema:
+  solver_token: password
+  solve_timeout_ms: int(5000,180000)
+  solve_attempts: int(1,10)
+  # The widget moves the piece this many CSS pixels less than the pointer travel.
+  # 10.5 was measured against the live widget; the solver re-measures it on every
+  # solve anyway, so this only saves the first attempt of each start.
+  drag_bias_px: float(0,80)

@@ -1,0 +1,18 @@
+{
+  "name": "xpeng-slider-solver",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hosted solver for the XPENG (NetEase Yidun) slider captcha",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "once": "node solver.mjs --debug-dir /debug"
+  },
+  "dependencies": {
+    "playwright-core": "1.49.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
